@@ -1,14 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>COFFEE & AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #121212; /* 더 어두운 배경 */
+            color: #e2e8f0; /* 밝은 회색 글씨 */
+            line-height: 1.6;
+        }
+    </style>
 </head>
-<body>
-<h1>Hello git</h1>
-<z1>안녕하세요</z1>
+<body class="antialiased">
+    <div class="min-h-screen flex flex-col items-center py-12 px-4">
+        <!-- Profile Section -->
+        <header class="w-full max-w-4xl text-center mb-12">
+            <h1 class="text-5xl font-bold text-white mb-2">COFFEE & AI</h1>
+            <p class="text-xl text-gray-300">이재웅 | 인하대학교 산업공학과</p>
+            <p class="text-lg text-cyan-500 font-medium">인공지능, 최적화, 데이터 분석 전문가</p>
+            <div class="mt-4 flex justify-center space-x-4 text-gray-400">
+                <a href="https://github.com/당신의_깃허브_아이디" target="_blank" class="hover:text-white transition-colors duration-200">
+                    <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.82-.26.82-.577V21.17c-3.32.72-4.02-1.6-4.02-1.6-.54-.98-1.32-1.24-1.32-1.24-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.82 2.81 1.29 3.5.99.11-.77.42-1.29.77-1.59-2.67-.3-5.48-1.34-5.48-5.96 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.18 0 0 1-.32 3.3 1.23.95-.27 1.95-.4 2.95-.4s1.9.13 2.85.4c2.3-.92 3.2-1.23 3.2-1.23.65 1.66.24 2.88.12 3.18.76.84 1.23 1.91 1.23 3.22 0 4.63-2.82 5.66-5.49 5.96.42.36.81 1.09.81 2.2V22c0 .32.22.69.82.577C20.562 21.8 24 17.302 24 12c0-6.627-5.373-12-12-12z" clip-rule="evenodd"/></svg>
+                </a>
+                <a href="mailto:당신의_이메일@example.com" class="hover:text-white transition-colors duration-200">
+                    <svg class="w-6 h-6 inline-block" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c.552 0 1 .448 1 1v7c0 .552-.448 1-1 1s-1-.448-1-1v-7c0-.552.448-1 1-1zM20 5H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H4V7l8 5 8-5v10z"/></svg>
+                </a>
+            </div>
+        </header>
 
+        <main class="w-full max-w-4xl space-y-8">
+            <!-- About Section -->
+            <section class="bg-gray-900 rounded-xl shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-white mb-4">소개</h2>
+                <p class="text-lg text-gray-300">
+                    인하대학교 산업공학과에서 인공지능, 최적화, 데이터 분석 분야에 대한 깊은 이해와 실무 경험을 쌓았습니다. 복잡한 문제를 해결하고 효율적인 시스템을 설계하는 데 열정을 가지고 있습니다. 다양한 프로젝트를 통해 얻은 경험을 바탕으로 기술적 역량을 지속적으로 발전시키고 있습니다.
+                </p>
+            </section>
 
+            <!-- Skills Section -->
+            <section class="bg-gray-900 rounded-xl shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-white mb-4">핵심 역량</h2>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-cyan-600 text-white text-sm font-medium px-3 py-1 rounded-full">인공지능 (AI)</span>
+                    <span class="bg-cyan-600 text-white text-sm font-medium px-3 py-1 rounded-full">데이터 분석 (Data Analysis)</span>
+                    <span class="bg-cyan-600 text-white text-sm font-medium px-3 py-1 rounded-full">최적화 (Optimization)</span>
+                    <span class="bg-gray-700 text-white text-sm font-medium px-3 py-1 rounded-full">Python</span>
+                    <span class="bg-gray-700 text-white text-sm font-medium px-3 py-1 rounded-full">TensorFlow & PyTorch</span>
+                    <span class="bg-gray-700 text-white text-sm font-medium px-3 py-1 rounded-full">SQL</span>
+                    <span class="bg-gray-700 text-white text-sm font-medium px-3 py-1 rounded-full">Scikit-learn</span>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="bg-gray-900 rounded-xl shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-white mb-4">주요 프로젝트</h2>
+                
+                <!-- Project Card 1 -->
+                <div class="bg-gray-800 rounded-lg p-6 mb-4 shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <h3 class="text-xl font-bold text-white mb-2">강화학습을 이용한 경로최적화</h3>
+                    <p class="text-gray-400 mb-3"><strong>기술 스택:</strong> 강화학습, Python, PPO,GNN</p>
+                    <p class="text-gray-300 mb-4">
+                    강화학습 ppo알고리즘 gnn을 사용한 산타 배송 경로최적화 
+                    </p>
+                    <a href="https://github.com/당신의_깃허브_아이디/프로젝트_레포지토리_이름_1" target="_blank" class="text-cyan-400 hover:text-cyan-200 font-medium transition-colors duration-200">
+                        자세히 보기 &rarr;
+                    </a>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="bg-gray-800 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <h3 class="text-xl font-bold text-white mb-2">CNN을 이용한 폐렴 검출</h3>
+                    <p class="text-gray-400 mb-3"><strong>기술 스택:</strong> SQL, PYTHON, TensorFlow</p>
+                    <p class="text-gray-300 mb-4">
+                      인프라 분석을 통한 출산율 통계
+                    </p>
+                    <a href="https://github.com/당신의_깃허브_아이디/프로젝트_레포지토리_이름_2" target="_blank" class="text-cyan-400 hover:text-cyan-200 font-medium transition-colors duration-200">
+                        자세히 보기 &rarr;
+                    </a>
+                </div>
+                <!-- Add more project cards as needed -->
+            </section>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="w-full max-w-4xl text-center text-gray-400 mt-12 pt-6 border-t border-gray-600">
+            <p>&copy; 2025 이재웅. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>
