@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응 속도 테스트</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 2rem;
+            background-color: #2d3748;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #game-area {
+            width: 100%;
+            height: 300px;
+            background-color: #4a5568;
+            border-radius: 0.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.5s ease;
+        }
+
+        #game-area.ready {
+            background-color: #f6ad55; /* 노란색 */
+        }
+
+        #game-area.go {
+            background-color: #68d391; /* 녹색 */
+        }
+
+        #start-button {
+            background-color: #4299e1;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        #start-button:hover {
+            background-color: #3182ce;
+        }
+
+        #result-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container flex flex-col items-center space-y-4">
+        <h1 class="text-3xl font-bold">반응 속도 테스트</h1>
+        <p class="text-gray-400">준비되면 아래 상자를 클릭하세요. 녹색으로 바뀌는 순간 최대한 빨리 다시 클릭하세요!</p>
+        
+        <div id="game-area" class="w-full max-w-lg h-80 rounded-lg cursor-pointer flex justify-center items-center text-3xl font-bold select-none">
+            <span id="instruction-text" class="text-white">준비</span>
+        </div>
+        
+        <div id="result-box" class="w-full max-w-lg p-4 bg-gray-700 rounded-lg hidden">
+            <p id="result-text"></p>
+        </div>
+    </div>
+
+    <script>
+        const gameArea = document.getElementById('game-area');
+        const instructionText = document.getElementById('instruction-text');
+        const resultBox = document.getElementById('result-box');
+        const resultText = document.getElementById('result-text');
+
+        let startTime;
+        let timeoutId;
+        let isWaiting = false;
+
+        function getRandomDelay() {
+            // 1.5초에서 4초 사이의 무작위 지연 시간을 반환
+            return Math.random() * 2500 + 1500;
+        }
+
+        function startGame() {
+            // 게임 초기화
+            gameArea.classList.remove('go');
+            gameArea.classList.add('ready');
+            instructionText.textContent = '기다리세요...';
+            resultBox.classList.add('hidden');
+            isWaiting = true;
+
+            // 무작위 지연 시간 후 녹색으로 변경
+            timeoutId = setTimeout(() => {
+                gameArea.classList.remove('ready');
+                gameArea.classList.add('go');
+                instructionText.textContent = '클릭!';
+                startTime = Date.now();
+                isWaiting = false;
+            }, getRandomDelay());
+        }
+
+        gameArea.addEventListener('click', () => {
+            if (isWaiting) {
+                // 너무 일찍 클릭한 경우
+                clearTimeout(timeoutId);
+                resultText.textContent = '너무 일찍 클릭했습니다! 다시 시도하세요.';
+                resultBox.classList.remove('hidden');
+                // 1초 후 게임 재시작
+                setTimeout(startGame, 1000); 
+            } else if (gameArea.classList.contains('go')) {
+                // 녹색일 때 클릭한 경우
+                const reactionTime = Date.now() - startTime;
+                resultText.textContent = `당신의 반응 속도는 ${reactionTime}ms 입니다! 다시 클릭하여 재시작`;
+                resultBox.classList.remove('hidden');
+                // 게임 재시작 준비
+                gameArea.classList.remove('go');
+                gameArea.classList.add('ready');
+                instructionText.textContent = '준비';
+            } else {
+                // 처음 클릭하거나 결과 창이 보일 때
+                startGame();
+            }
+        });
+
+        // 페이지 로드 시 게임 시작
+        window.onload = startGame;
+    </script>
+</body>
+</html>
